@@ -1,0 +1,48 @@
+<!-- mientras no haya data se mostrara "cargando", si hay data se quita el "cargando"-->
+<app-loading *ngIf="!data"></app-loading>
+
+<!-- si ya hay datos se mostrará toda la información -->
+<div class="row animated fadeIn" *ngIf="data">
+    <div class="col-2">
+        <img [src]="artista.images | validarImagen" alt="imagen de artista" class="img-thumbnail imgn-artista">
+    </div>
+    <div class="col align-self-center">
+        {{ artista.name }}
+        <p>
+            <a [href]="artista.external_urls.spotify" target="_blank">
+            Ir a la pagina del artista
+          </a>
+        </p>
+    </div>
+    <div class="col-4 align-self-center ">
+        <button routerLink="/search" class="btn btn-outline-success">
+            Regresar a la "Busqueda"
+        </button>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Albúm</th>
+                    <th>Canción</th>
+                    <th>Vista previa</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let track of topTracks">
+                <td class="text-center align-middle">
+                    <img [src]="track.album.images | validarImagen" class="track_image" alt="">
+                </td>
+                <td class="align-middle">{{ track.album.name }}</td>
+                <td class="align-middle">{{ track.name}}</td>
+                <td class="align-middle">
+                    <!-- <audio [src]="track.preview_url" controls></audio> -->
+                    <iframe [src]="track.uri | domseguro : 'https://open.spotify.com/embed?uri='"></iframe>
+                </td>
+            </tbody>
+        </table>
+    </div>
+</div>

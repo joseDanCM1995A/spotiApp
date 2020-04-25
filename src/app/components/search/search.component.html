@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col">
+        <!-- el #termino es para pasar el valor de o que se lea en teclado a la funcion -->
+        <input #termino type="text" (keyup)="buscar(termino.value)" class="form-control" placeholder="Escriba lo que quiere buscar">
+    </div>
+</div>
+
+
+<app-loading *ngIf="data"></app-loading>
+
+<!-- mandando el valor de nuevos lanzamientos al componente app-tarjetas -->
+<app-tarjetas *ngIf="!data" [items]="artistas"></app-tarjetas>

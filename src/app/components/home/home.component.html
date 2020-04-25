@@ -1,0 +1,14 @@
+<!-- componente del loading -->
+<!-- mientras no haya data -mientras se esté cargando se va a mostrar el loading -->
+<app-loading *ngIf="data"></app-loading>
+<!-- seccion para mostrar un error en el prograna si es que lo hay -->
+<div *ngIf="error" class="alert alert-danger text-center">
+    <h3>
+        SE HA GENERADO UN ERROR
+    </h3>
+    <p>
+        tipo de error: {{ tipoError }}
+    </p>
+</div>
+<!-- mandando el valor de nuevos lanzamientos al componente app-tarjetas -->
+<app-tarjetas [items]="nuevosLanzamientos"></app-tarjetas>

@@ -1,0 +1,12 @@
+<div class="card-columns m-5 animated fadeIn">
+    <!-- mandando todo el item a la funcion click para traer toda la información del artista -->
+    <div class="card puntero" *ngFor="let item of items" (click)="verArtista(item)">
+        <img class="card-img-top" [src]="item.images | validarImagen" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Nombre: {{ item.name}}</h5>
+            <p class="card-text text-center">
+                <span *ngFor="let artista of item.artists" class="badge badge-primary">{{ artista.name }}</span>
+            </p>
+        </div>
+    </div>
+</div>
